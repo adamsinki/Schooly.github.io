@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download Schooly - Experience the future of teaching with our innovative app">
+    <title>Schooly - Download Our App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="title">Schooly</h1>
+            <p class="subtitle">Please download our app to experience the future of teaching!</p>
+            <button class="download-btn" id="downloadBtn">
+                <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download APK</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        downloadBtn.addEventListener('click', function () {
+            // Add a visual feedback animation
+            downloadBtn.classList.add('downloading');
+
+            // Create a temporary link element to trigger download
+            const link = document.createElement('a');
+            link.href = 'schooly.apk'; // Replace with your actual APK file path
+            link.download = 'Schooly.apk';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Remove animation class after a short delay
+            setTimeout(() => {
+                downloadBtn.classList.remove('downloading');
+            }, 2000);
+        });
+
+        // Add hover effect with mouse movement
+        downloadBtn.addEventListener('mousemove', function (e) {
+            const rect = downloadBtn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            downloadBtn.style.setProperty('--mouse-x', x + 'px');
+            downloadBtn.style.setProperty('--mouse-y', y + 'px');
+        });
+    </script>
+</body>
+
+</html>
